@@ -2,7 +2,7 @@ package com.fabiofrasson.tddbyexample;
 
 import java.util.Objects;
 
-public class Money {
+public class Money implements Expression {
 
   protected int amount;
   protected String currency;
@@ -31,6 +31,10 @@ public class Money {
   public boolean equals(Object object) {
     Money money = (Money) object;
     return amount == money.amount && Objects.equals(this.currency, money.currency);
+  }
+
+  public Expression plus(Money addend) {
+    return new Money(amount + addend.amount, currency);
   }
 
   @Override
